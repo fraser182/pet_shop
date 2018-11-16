@@ -30,7 +30,7 @@ end
 
 #7
 def pets_by_breed(shop, breed)
-breed_of_pet =[]
+  breed_of_pet =[]
   for pets in shop[:pets]
     if pets[:breed] == breed
       breed_of_pet.push(pets)
@@ -50,13 +50,21 @@ end
 
 #8
 def find_pet_by_name(shop, pet_name)
-for pet in shop[:pets]
-  if pet[:name]== pet_name
-    return pet
+  for pet in shop[:pets]
+    if pet[:name]== pet_name
+      return pet
+    end
   end
-end
-return nil
+  return nil
 end
 
 #9
-# def remove_pet_by_nam
+def remove_pet_by_name(shop, pet_name)
+  for pet in shop[:pets]
+    if pet[:name] == pet_name
+      shop[:pets].delete(pet)
+    end
+  end
+end
+
+#10
