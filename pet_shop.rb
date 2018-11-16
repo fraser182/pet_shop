@@ -55,7 +55,7 @@ for pet in shop[:pets]
     return pet
   end
 end
-# return nil
+return nil
 end
 
 #9
