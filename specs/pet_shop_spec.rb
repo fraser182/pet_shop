@@ -152,17 +152,17 @@ class TestPetShop < Minitest::Test
   end
 
 #12
-  # def test_remove_customer_cash
-  #   customer = @customers[0]
-  #   remove_customer_cash(customer, 100)
-  #   assert_equal(900, customer[:cash])
-  # end
-
+  def test_remove_customer_cash
+    customer = @customers[0]
+    remove_customer_cash(customer, 100)
+    assert_equal(900, customer[:cash])
+  end
+#13
   # def test_customer_pet_count
   #   count = customer_pet_count(@customers[0])
   #   assert_equal(0, count)
   # end
-
+#14
   # def test_add_pet_to_customer
   #   customer = @customers[0]
   #   add_pet_to_customer(customer, @new_pet)
