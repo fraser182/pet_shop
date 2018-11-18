@@ -9,8 +9,10 @@ def total_cash(shop)
 end
 
 #3
-def add_or_remove_cash(shop, cash_amount)
-  shop[:admin][:total_cash] += cash_amount
+def add_or_remove_cash(shop, cash)
+  # shop[:admin][:total_cash] += cash
+  total_cash(shop) += cash
+
 end
 
 #4
@@ -102,4 +104,16 @@ def customer_can_afford_pet(customer, pet)
   end
 end
 
-#16
+#16 Not quite got this yet!
+# def sell_pet_to_customer(shop, pet, customer)
+#
+#   if (find_pet_by_name(shop, pet_name) = pet[:name]) && (customer(cash) >= pet[:price])
+#
+#     customer_pet_count(customer) += 1
+#     pets_sold(shop) += 1
+#     customer(cash) -= pet[:price]
+#     total_cash(shop) += pet[:price]
+#     customer[:pets].push(pet)
+#     shop[:pets].delete(pet)
+#   end
+# end
