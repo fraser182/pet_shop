@@ -10,9 +10,7 @@ end
 
 #3
 def add_or_remove_cash(shop, cash)
-  # shop[:admin][:total_cash] += cash
-  total_cash(shop) += cash
-
+   shop[:admin][:total_cash] += cash
 end
 
 #4
@@ -49,6 +47,14 @@ end
 #   end
 # end
 
+# Class answer
+# def pets_by_breed(pet_shop, breed)
+#   matches = []
+#   for pet in pet_shop[:pets]
+#     matches << pet if(pet[:breed] == breed)
+#   end
+#   return matches
+# end
 
 #8
 def find_pet_by_name(shop, pet_name)
@@ -60,6 +66,14 @@ def find_pet_by_name(shop, pet_name)
   return nil
 end
 
+# def find_pet_by_name(pet_shop, pet_name)
+#   match = nil
+#   for pet in pet_shop[:pets]
+#     match = pet if(pet[:name] == pet_name)
+#   end
+#   return match
+# end
+
 #9
 def remove_pet_by_name(shop, pet_name)
   for pet in shop[:pets]
@@ -68,6 +82,11 @@ def remove_pet_by_name(shop, pet_name)
     end
   end
 end
+
+# def remove_pet_by_name(pet_shop, pet_name)
+#   pet_to_delete = find_pet_by_name(pet_shop, pet_name)
+#   pet_shop[:pets].delete(pet_to_delete)
+# end
 
 #10
 def add_pet_to_stock(shop, pet)
@@ -82,7 +101,7 @@ end
 
 #12
 def remove_customer_cash(customer, amount)
-  return customer[:cash] -= amount
+  customer[:cash] -= amount
 end
 
 #13
@@ -94,6 +113,12 @@ end
 def add_pet_to_customer(customer, pet)
   return customer[:pets].push(pet)
 end
+
+# Solution
+# def add_pet_to_customer(customer, pet)
+#   customer[:pets] << pet
+# end
+
 #### OPTIONAL ####
 #15
 def customer_can_afford_pet(customer, pet)
@@ -105,15 +130,28 @@ def customer_can_afford_pet(customer, pet)
 end
 
 #16 Not quite got this yet!
+
+def sell_pet_to_customer(shop, pet, customer)
+  if pet == nil
+    return
+  elsif !(customer_can_afford_pet(customer, pet))
+    return
+  else 
+    add_pet_to_customer(customer,pet)
+    increase_pets_sold(shop, 1)
+    remove_customer_cash(customer, customer[:cash])
+    remove_pet_by_name(shop, pet[:name])
+    add_or_remove_cash(shop, pet[:price])
+  end
+end
+# ANSWER
 # def sell_pet_to_customer(shop, pet, customer)
+#   return if (pet == nil)
+#   return if !(customer_can_afford_pet(customer, pet))
 #
-#   if (find_pet_by_name(shop, pet_name) = pet[:name]) && (customer(cash) >= pet[:price])
-#
-#     customer_pet_count(customer) += 1
-#     pets_sold(shop) += 1
-#     customer(cash) -= pet[:price]
-#     total_cash(shop) += pet[:price]
-#     customer[:pets].push(pet)
-#     shop[:pets].delete(pet)
-#   end
+#   add_pet_to_customer(customer,pet)
+#   increase_pets_sold(shop, 1)
+#   remove_customer_cash(customer, customer[:cash])
+#   remove_pet_by_name(shop, pet[:name])
+#   add_or_remove_cash(shop, pet[:price])
 # end
